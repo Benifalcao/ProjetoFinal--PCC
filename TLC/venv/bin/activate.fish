@@ -11,6 +11,7 @@ function deactivate  -d "Exit virtual environment and return to normal shell env
         set -gx PYTHONHOME $_OLD_VIRTUAL_PYTHONHOME
         set -e _OLD_VIRTUAL_PYTHONHOME
     end
+    
 
     if test -n "$_OLD_FISH_PROMPT_OVERRIDE"
         functions -e fish_prompt
