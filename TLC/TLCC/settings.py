@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "ObjetoTroca.apps.ObjetoTrocaConfig"
+    "UsuarioTroca.apps.UsuarioTrocaConfig"
+    
 ]
 
 MIDDLEWARE = [
