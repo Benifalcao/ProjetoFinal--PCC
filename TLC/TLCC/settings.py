@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "ObjetoTroca.apps.ObjetoTrocaConfig"
     "UsuarioTroca.apps.UsuarioTrocaConfig"
-    
+    "usuario.apps.UsuarioConfig"
+    "objetos.apps.ObjetosConfig"
 ]
 
 MIDDLEWARE = [
