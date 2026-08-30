@@ -1,4 +1,4 @@
 from django.contrib import admin
+from .models import ObjetoTroca
 
-# Register your models here.
 admin.site.register(ObjetoTroca)

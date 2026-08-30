@@ -12,14 +12,16 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Troca',
+            name='ObjetoTroca',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('status', models.CharField(max_length=20)),
-                ('ofertantes', models.CharField(max_length=100)),
-                ('dateInicial', models.CharField(max_length=20)),
-                ('dataRescc', models.CharField(blank=True, max_length=20, null=True)),
-                ('Interessado', models.CharField(max_length=100)),
+                ('quant', models.IntegerField()),
+                ('data_troca', models.CharField(max_length=20)),
+                ('obsevação', models.TextField(blank=True, null=True)),
             ],
+            options={
+                'verbose_name': 'Objeto da Troca',
+                'verbose_name_plural': 'Objetos das Trocas',
+            },
         ),
     ]

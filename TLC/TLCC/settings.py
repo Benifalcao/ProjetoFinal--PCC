@@ -32,19 +32,20 @@ ALLOWED_HOSTS = []
 
 
 
-
 INSTALLED_APPS = [
-    "trocas.apps.TrocasConfig",
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
-    "ObjetoTroca.apps.ObjetoTrocaConfig"
-    "UsuarioTroca.apps.UsuarioTrocaConfig"
-    "usuario.apps.UsuarioConfig"
-    "objetos.apps.ObjetosConfig"
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+
+    # Seus aplicativos:
+    'usuario',
+    'objetos',
+    'trocas',
+    'ObjetoTroca',
+    'UsuarioTroca',  
 ]
 
 MIDDLEWARE = [

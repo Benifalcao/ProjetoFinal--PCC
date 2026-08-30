@@ -1,4 +1,4 @@
 from django.contrib import admin
+from .models import UsuarioTroca
 
-# Register your models here.
 admin.site.register(UsuarioTroca)
