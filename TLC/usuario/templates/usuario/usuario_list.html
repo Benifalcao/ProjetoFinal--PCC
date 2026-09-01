@@ -1,0 +1,9 @@
+{% if usuarios %}
+    <ul>
+    {% for usuario in usuarios %}
+        <li><a href="{% url 'usuario:usuario_detail' usuario.id %}">{{ usuario.nome }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Nenhum usuário cadastrado ainda.</p>
+{% endif %}
