@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'trocas',
     'usuario',
 ]
-
+AUTH_USER_MODEL = 'usuario.Usuario'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
