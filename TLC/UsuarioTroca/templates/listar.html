@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Usuários nas Trocas</title>
+</head>
+<body>
+    <h2>Lista de Usuários vinculados a Trocas</h2>
+
+    <a href="{% url 'criar_usuario_troca' %}">+ Vincular Novo Usuário em Troca</a>
+    <br><br>
+
+    <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Usuário</th>
+                <th>Troca</th>
+                <th>Status</th>
+                <th>Data Início</th>
+                <th>Protocolo</th>
+                <th>Data Renovação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in usuarios_troca %}
+            <tr>
+                <td>{{ item.usuario.nome }}</td>
+                <td>Troca #{{ item.troca.pk }}</td>
+                <td>{{ item.status }}</td>
+                <td>{{ item.data_inicio }}</td>
+                <td>{{ item.protocolo }}</td>
+                <td>{{ item.data_renovacao|default:"-" }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">Nenhum vínculo registrado até o momento.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <a href="{% url 'listar_trocas' %}">Voltar para Trocas</a>
+</body>
+</html>

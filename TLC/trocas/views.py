@@ -30,3 +30,18 @@ def criar_objeto_troca(request):
     else:
         form = ObjetoTrocaForm()
     return render(request, 'trocas/criar_objeto_troca.html', {'form': form})
+    
+
+def listar_usuarios_troca(request):
+    usuarios_troca = UsuarioTroca.objects.all()
+    return render(request, 'trocas/listar_usuario_troca.html', {'usuarios_troca': usuarios_troca})
+
+def criar_usuario_troca(request):
+    if request.method == 'POST':
+        form = UsuarioTrocaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('listar_usuarios_troca')
+    else:
+        form = UsuarioTrocaForm()
+    return render(request, 'trocas/criar_usuario_troca.html', {'form': form})
