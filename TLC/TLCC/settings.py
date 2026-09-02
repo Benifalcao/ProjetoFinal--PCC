@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 
 
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,13 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # Seus aplicativos:
-    'usuario',
     'objetos',
     'trocas',
-    'ObjetoTroca',
-    'UsuarioTroca',  
+    'usuario',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -63,7 +62,7 @@ ROOT_URLCONF = 'TLCC.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

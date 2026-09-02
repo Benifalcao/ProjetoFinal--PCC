@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Trocas</title>
+</head>
+<body>
+
+    <h1>Trocas cadastradas</h1>
+
+    <a href="{% url 'criar_troca' %}">Cadastrar nova troca</a>
+
+    <hr>
+
+    {% for troca in trocas %}
+        <h2>Troca #{{ troca.id }}</h2>
+
+        <p>Status: {{ troca.status }}</p>
+        <p>Ofertantes: {{ troca.ofertantes }}</p>
+        <p>Data inicial: {{ troca.data_inicial }}</p>
+        <p>Data da resposta: {{ troca.data_resposta }}</p>
+        <p>Interessado: {{ troca.interessado }}</p>
+
+        <hr>
+    {% empty %}
+        <p>Nenhuma troca cadastrada.</p>
+    {% endfor %}
+
+</body>
+</html>

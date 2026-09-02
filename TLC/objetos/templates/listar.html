@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Objetos</title>
+</head>
+<body>
+
+    <h1>Objetos cadastrados</h1>
+
+    <a href="{% url 'criar_objeto' %}">Cadastrar novo objeto</a>
+
+    <hr>
+
+    {% for objeto in objetos %}
+        <h2>{{ objeto.nome }}</h2>
+        <p>{{ objeto.descricao }}</p>
+        <p>Valor: {{ objeto.valor_avaliacao }}</p>
+        <p>Status: {{ objeto.status }}</p>
+        <hr>
+    {% empty %}
+        <p>Nenhum objeto cadastrado.</p>
+    {% endfor %}
+
+</body>
+</html>

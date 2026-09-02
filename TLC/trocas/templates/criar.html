@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar troca</title>
+</head>
+<body>
+
+    <h1>Cadastrar troca</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <br>
+
+    <a href="{% url 'listar_trocas' %}">Voltar para trocas</a>
+
+</body>
+</html>
