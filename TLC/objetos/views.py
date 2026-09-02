@@ -17,7 +17,7 @@ def criar_objeto(request):
 
         if form.is_valid():
             objeto = form.save(commit=False)
-            objeto.usuario = request.user
+            objeto.usuario = request.user.usuario
             objeto.save()
 
             return redirect('listar_objetos')
