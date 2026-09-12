@@ -1,0 +1,9 @@
+{% if usuarios_troca %}
+    <ul>
+    {% for ut in usuarios_troca %}
+        <li>{{ ut.usuario.nome }} - Troca #{{ ut.troca.pk }} ({{ ut.status }})</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Nenhum registro ainda.</p>
+{% endif %}

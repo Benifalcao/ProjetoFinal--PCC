@@ -17,6 +17,10 @@ Including another URLconf
 
 
 
+
+
+
+
 from django.contrib import admin
 from django.urls import include, path
 
@@ -24,5 +28,7 @@ urlpatterns = [
     path('trocas/', include('trocas.urls')),
     path('objetos/', include('objetos.urls')),
     path('usuario/', include('usuario.urls')),
+    path('usuario-troca/', include('UsuarioTroca.urls')),
+    path('objeto-troca/', include('ObjetoTroca.urls')),
     path('admin/', admin.site.urls),
 ]
