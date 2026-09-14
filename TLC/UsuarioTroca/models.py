@@ -1,6 +1,6 @@
 from django.db import models
 
-class UsuarioTroca(models.Model):
+class UsuarioTroca(user):
     usuario = models.ForeignKey('usuario.Usuario', on_delete=models.CASCADE)
     troca = models.ForeignKey('trocas.Troca', on_delete=models.CASCADE)
     status = models.CharField(max_length=20)

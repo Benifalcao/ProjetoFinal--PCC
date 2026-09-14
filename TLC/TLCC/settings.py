@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'trocas',
     'usuario',
 ]
-AUTH_USER_MODEL = 'usuario.Usuario'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -60,7 +59,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'TLCC.urls'
 
 TEMPLATES = [
-    {
+    {   ''
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [BASE_DIR / "templates"],
         'APP_DIRS': True,
