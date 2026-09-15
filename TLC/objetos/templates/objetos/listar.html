@@ -13,14 +13,22 @@
     <hr>
 
     {% for objeto in objetos %}
-        <h2>{{ objeto.nome }}</h2>
+    <div style="border-bottom: 1px solid #ccc; margin-bottom: 15px; padding-bottom: 10px;">
+        <h3>{{ objeto.nome }}</h3>
         <p>{{ objeto.descricao }}</p>
-        <p>Valor: {{ objeto.valor_avaliacao }}</p>
-        <p>Status: {{ objeto.status }}</p>
-        <hr>
-    {% empty %}
-        <p>Nenhum objeto cadastrado.</p>
-    {% endfor %}
+        <p><strong>Valor:</strong> {{ objeto.valor_avaliacao }}</p>
+        <p><strong>Status:</strong> {{ objeto.status }}</p>
+        
+        <!-- LINKS DO CRUD -->
+        <p>
+            <a href="{% url 'detalhar_objeto' objeto.id %}">Ver detalhes</a> | 
+            <a href="{% url 'editar_objeto' objeto.id %}">Editar</a> | 
+            <a href="{% url 'deletar_objeto' objeto.id %}">Deletar</a>
+        </p>
+    </div>
+{% empty %}
+    <p>Nenhum objeto cadastrado.</p>
+{% endfor %}
 
 </body>
 </html>

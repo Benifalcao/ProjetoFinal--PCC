@@ -20,7 +20,11 @@
         <p>Data inicial: {{ troca.data_inicial }}</p>
         <p>Data da resposta: {{ troca.data_resposta }}</p>
         <p>Interessado: {{ troca.interessado }}</p>
-
+      <p>
+            <a href="{% url 'trocas:detalhar_troca' troca.id %}">Detalhar</a> | 
+            <a href="{% url 'trocas:editar_troca' troca.id %}">Editar</a> | 
+            <a href="{% url 'trocas:deletar_troca' troca.id %}">Deletar</a>
+        </p>
         <hr>
     {% empty %}
         <p>Nenhuma troca cadastrada.</p>

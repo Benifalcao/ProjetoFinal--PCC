@@ -31,4 +31,5 @@ urlpatterns = [
     path('usuario-troca/', include('UsuarioTroca.urls')),
     path('objeto-troca/', include('ObjetoTroca.urls')),
     path('admin/', admin.site.urls),
+    
 ]

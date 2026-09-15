@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Troca</title>
+</head>
+<body>
+    <h1>Editar Proposta de Troca #{{ troca.id }}</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar Alterações</button>
+    </form>
+
+    <p>
+        <a href="{% url 'trocas:listar_trocas' %}">Voltar para a lista</a>
+    </p>
+</body>
+</html>

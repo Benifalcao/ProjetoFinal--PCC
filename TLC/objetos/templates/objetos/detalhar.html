@@ -1,0 +1,6 @@
+<h2>{{ objeto.nome }}</h2>
+<p>{{ objeto.descricao }}</p>
+
+<a href="{% url 'editar_objeto' objeto.pk %}">Editar</a>
+<a href="{% url 'deletar_objeto' objeto.pk %}">Deletar</a>
+<a href="{% url 'listar_objetos' %}">Voltar</a>
