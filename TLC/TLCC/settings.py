@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 
 
 
+
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -42,9 +44,23 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'objetos',
-    'trocas',
     'usuario',
+    'trocas',
+    'UsuarioTroca',
+    'ObjetoTroca',
 ]
+
+
+
+
+
+
+
+
+
+
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -128,3 +144,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

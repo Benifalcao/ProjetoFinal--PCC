@@ -1,0 +1,9 @@
+{% if objetos_troca %}
+    <ul>
+    {% for ot in objetos_troca %}
+        <li>{{ ot.objeto.nome }} - Troca #{{ ot.troca.pk }} ({{ ot.quant }} un.)</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Nenhum registro ainda.</p>
+{% endif %}

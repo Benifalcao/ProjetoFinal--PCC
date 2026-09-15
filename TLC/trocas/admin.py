@@ -1,5 +1,11 @@
+
+
+
 from django.contrib import admin
-from .models import Troca, UsuarioTroca, ObjetoTroca
+from .models import Troca
+from UsuarioTroca.models import UsuarioTroca
+from ObjetoTroca.models import ObjetoTroca
+
 
 # 1. Configurações Inlines
 class UsuarioTrocaInline(admin.TabularInline):
@@ -18,18 +24,7 @@ class TrocaAdmin(admin.ModelAdmin):
     search_fields = ["status", "interessado"]
     inlines = [UsuarioTrocaInline, ObjetoTrocaInline]
 
-# 3. Admins individuais das tabelas intermediárias
-@admin.register(UsuarioTroca)
-class UsuarioTrocaAdmin(admin.ModelAdmin):
-    list_display = ["id", "usuario", "troca", "status", "data_inicio"]
-    list_filter = ["status"]
-
-@admin.register(ObjetoTroca)
-class ObjetoTrocaAdmin(admin.ModelAdmin):
-    list_display = ["id", "objeto", "troca", "quant", "data_troca"]
-    list_filter = ["data_troca"]
-
-# 4. Personalização do Painel
+# 3. Personalização do Painel
 admin.site.site_header = "Sistema de Trocas"
 admin.site.site_title = "Sistema de Trocas"
 admin.site.index_title = "Administração do Sistema de Trocas"
