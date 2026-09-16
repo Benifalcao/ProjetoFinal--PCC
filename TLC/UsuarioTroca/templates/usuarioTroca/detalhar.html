@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes UsuarioTroca</title>
+</head>
+<body>
+    <!-- ALTERAÇÃO: Exibição dos atributos do Diagrama de Classes -->
+    <h1>Detalhes do Vínculo #{{ item.id }}</h1>
+    <p><strong>Usuário:</strong> {{ item.usuario.nome }}</p>
+    <p><strong>Troca:</strong> Troca #{{ item.troca.pk }}</p>
+    <p><strong>Status:</strong> {{ item.status }}</p>
+    <p><strong>Protocolo:</strong> {{ item.protocolo }}</p>
+    <p><strong>Data de Início:</strong> {{ item.dataInicio }}</p>
+    <p><strong>Data de Renovação:</strong> {{ item.DataRenovacao }}</p>
+    <br>
+    <a href="{% url 'usuariotroca:listar' %}">Voltar para a lista</a>
+</body>
+</html>

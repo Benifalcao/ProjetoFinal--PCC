@@ -1,7 +1,17 @@
+<h2>Lista de Usuários em Trocas</h2>
+<a href="{% url 'usuariotroca:criar' %}">Criar Novo Vínculo</a>
+<br><br>
+
 {% if usuarios_troca %}
     <ul>
     {% for ut in usuarios_troca %}
-        <li>{{ ut.usuario.nome }} - Troca #{{ ut.troca.pk }} ({{ ut.status }})</li>
+        <!-- ALTERAÇÃO: Estruturação dos links dentro do <li> e verificação do status -->
+        <li>
+            {{ ut.usuario.nome }} - Troca #{{ ut.troca.pk }} {% if ut.status %}({{ ut.status }}){% endif %} - 
+            <a href="{% url 'usuariotroca:detalhar' ut.id %}">Detalhar</a> | 
+            <a href="{% url 'usuariotroca:editar' ut.id %}">Editar</a> | 
+            <a href="{% url 'usuariotroca:deletar' ut.id %}">Deletar</a>
+        </li>
     {% endfor %}
     </ul>
 {% else %}

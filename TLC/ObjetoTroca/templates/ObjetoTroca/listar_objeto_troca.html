@@ -1,7 +1,17 @@
+<h2>Lista de Objetos em Trocas</h2>
+<a href="{% url 'objetotroca:criar' %}">Adicionar Objeto à Troca</a>
+<br><br>
+
 {% if objetos_troca %}
     <ul>
     {% for ot in objetos_troca %}
-        <li>{{ ot.objeto.nome }} - Troca #{{ ot.troca.pk }} ({{ ot.quant }} un.)</li>
+        <!-- ALTERAÇÃO: Estruturação dos links dentro do <li> e exibição de quantidade -->
+        <li>
+            {{ ot.objeto.nome }} - Troca #{{ ot.troca.pk }} ({{ ot.quant }} un.) - 
+            <a href="{% url 'objetotroca:detalhar' ot.id %}">Detalhar</a> | 
+            <a href="{% url 'objetotroca:editar' ot.id %}">Editar</a> | 
+            <a href="{% url 'objetotroca:deletar' ot.id %}">Deletar</a>
+        </li>
     {% endfor %}
     </ul>
 {% else %}

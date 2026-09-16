@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes ObjetoTroca</title>
+</head>
+<body>
+    <!-- ALTERAÇÃO: Exibição dos atributos do Diagrama de Classes -->
+    <h1>Detalhes do Objeto na Troca #{{ item.id }}</h1>
+    <p><strong>Objeto:</strong> {{ item.objeto.nome }}</p>
+    <p><strong>Troca:</strong> Troca #{{ item.troca.pk }}</p>
+    <p><strong>Quantidade:</strong> {{ item.quant }}</p>
+    <p><strong>Data da Troca:</strong> {{ item.data_troca }}</p>
+    <p><strong>Observação:</strong> {{ item.observacao }}</p>
+
+    <br>
+    <a href="{% url 'objetotroca:listar' %}">Voltar para a lista</a>
+</body>
+</html>
