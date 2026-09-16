@@ -1,0 +1,7 @@
+<h1>Confirmar exclusão</h1>
+<p>Tem certeza que deseja excluir o usuário "{{ usuario.nome }}"?</p>
+<form method="post">
+{% csrf_token %}
+<input type="submit" value="Sim, excluir">
+</form>
+<a href="{% url 'usuario:usuario_detail' usuario.pk %}">Cancelar</a>

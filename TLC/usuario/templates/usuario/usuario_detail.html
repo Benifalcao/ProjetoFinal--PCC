@@ -1,3 +1,6 @@
 <h1>{{ usuario.nome }}</h1>
 <p>Login: {{ usuario.username }}</p>
 <p>Telefone: {{ usuario.telefone }}</p>
+
+<a href="{% url 'usuario:usuario_editar' usuario.pk %}">Editar</a>
+<a href="{% url 'usuario:usuario_excluir' usuario.pk %}">Excluir</a>
