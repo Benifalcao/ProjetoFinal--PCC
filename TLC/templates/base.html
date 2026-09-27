@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Trocas</title>
+</head>
+<body>
+    <header>
+        {% if user.is_authenticated %}
+            <p>Olá, {{ user.username }}! <a href="{% url 'logout' %}">Sair</a></p>
+        {% else %}
+            <a href="{% url 'login' %}">Entrar</a>
+        {% endif %}
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>
