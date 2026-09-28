@@ -1,6 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
 <h2>Tem certeza que deseja deletar "{{ objeto.nome }}"?</h2>
 <form method="post">
     {% csrf_token %}
     <button type="submit">Confirmar Exclusão</button>
 </form>
 <a href="{% url 'detalhar_objeto' objeto.pk %}">Cancelar</a>
+{% endblock %}
