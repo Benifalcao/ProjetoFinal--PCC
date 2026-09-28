@@ -12,7 +12,7 @@ def listar_objetos(request):
         'objetos': objetos
     })
 
-
+@login_required
 def criar_objeto(request):
     if request.method == 'POST':
         form = ObjetoForm(request.POST)
@@ -30,7 +30,7 @@ def detalhar_objeto(request, pk):
     return render(request, 'objetos/detalhar.html', {
         'objeto': objeto
     })
-
+@login_required
 def editar_objeto(request, pk):
     objeto = get_object_or_404(Objeto, pk=pk)
     if request.method == 'POST':
@@ -44,7 +44,7 @@ def editar_objeto(request, pk):
         'form': form,
         'objeto': objeto
     })
-
+@login_required
 def deletar_objeto(request, pk):
     objeto = get_object_or_404(Objeto, pk=pk)
     if request.method == 'POST':

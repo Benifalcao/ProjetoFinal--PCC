@@ -17,7 +17,7 @@ def usuario_detail(request, usuario_id):
     return render(request, "usuario/usuario_detail.html", {"usuario": usuario})
 
 
-
+@login_required
 def usuario_create(request):
     if request.method == 'POST':
         form = UsuarioForm(request.POST)
@@ -37,6 +37,7 @@ def usuario_create(request):
     return render(request, 'usuario/usuario_form.html', {'form': form})
 
 
+@login_required
 def usuario_editar(request, usuario_id):
     usuario = get_object_or_404(Usuario, pk=usuario_id)
     if request.method == 'POST':
@@ -57,6 +58,7 @@ def usuario_editar(request, usuario_id):
     return render(request, 'usuario/usuario_editar.html', {'form': form, 'usuario': usuario})
 
 
+@login_required
 def usuario_excluir(request, usuario_id):
     usuario = get_object_or_404(Usuario, pk=usuario_id)
     if request.method == 'POST':
