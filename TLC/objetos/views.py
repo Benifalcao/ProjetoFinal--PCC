@@ -1,4 +1,4 @@
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import render, redirect, get_object_or_404
 from usuario.models import Usuario
 from django.shortcuts import render, redirect
@@ -7,6 +7,7 @@ from .forms import ObjetoForm
 
 
 @login_required
+@permission_required('objetos.view_objeto', raise_exception=True)
 def listar_objetos(request):
     objetos = Objeto.objects.all()
 
@@ -15,6 +16,7 @@ def listar_objetos(request):
     })
 
     @login_required
+    @permission_required('objetos.add_objeto', raise_exception=True)
 def criar_objeto(request):
     if request.method == 'POST':
         form = ObjetoForm(request.POST)
@@ -27,12 +29,14 @@ def criar_objeto(request):
     return render(request, 'objetos/criar.html', {'form': form})
 # --Novasviews--
     @login_required
+    @permission_required('objetos.view_objeto', raise_exception=True)
 def detalhar_objeto(request, pk):
     objeto = get_object_or_404(Objeto, pk=pk)
     return render(request, 'objetos/detalhar.html', {
         'objeto': objeto
     })
 @login_required
+@permission_required('objetos.change_objeto', raise_exception=True)
 def editar_objeto(request, pk):
     objeto = get_object_or_404(Objeto, pk=pk)
     if request.method == 'POST':
@@ -47,6 +51,7 @@ def editar_objeto(request, pk):
         'objeto': objeto
     })
 @login_required
+@permission_required('objetos.delete_objeto', raise_exception=True)
 def deletar_objeto(request, pk):
     objeto = get_object_or_404(Objeto, pk=pk)
     if request.method == 'POST':

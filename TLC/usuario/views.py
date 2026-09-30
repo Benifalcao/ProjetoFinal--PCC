@@ -1,23 +1,26 @@
 
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
 from .models import Usuario
 from .forms import UsuarioForm
 
 @login_required
+@permission_required('usuario.view_usuario', raise_exception=True)
 def usuario_list(request):
     usuarios = Usuario.objects.all()
     context = {"usuarios": usuarios}
     return render(request, "usuario/usuario_list.html", context)
 
 @login_required
+@permission_required('usuario.view_usuario', raise_exception=True)
 def usuario_detail(request, usuario_id):
     usuario = get_object_or_404(Usuario, pk=usuario_id)
     return render(request, "usuario/usuario_detail.html", {"usuario": usuario})
 
 
 @login_required
+@permission_required('usuario.add_usuario', raise_exception=True)
 def usuario_create(request):
     if request.method == 'POST':
         form = UsuarioForm(request.POST)
@@ -38,6 +41,7 @@ def usuario_create(request):
 
 
 @login_required
+@permission_required('usuario.change_usuario', raise_exception=True)
 def usuario_editar(request, usuario_id):
     usuario = get_object_or_404(Usuario, pk=usuario_id)
     if request.method == 'POST':
@@ -59,6 +63,7 @@ def usuario_editar(request, usuario_id):
 
 
 @login_required
+@permission_required('usuario.delete_usuario', raise_exception=True)
 def usuario_excluir(request, usuario_id):
     usuario = get_object_or_404(Usuario, pk=usuario_id)
     if request.method == 'POST':

@@ -10,6 +10,7 @@ def listar_objeto_troca(request):
     return render(request, 'ObjetoTroca/listar_objeto_troca.html', {'objetos_troca': objetos_troca})
 
 @login_required
+@permission_required('objetotroca.add_objetotroca', raise_exception=True)
 def criar_objeto_troca(request):
     if request.method == 'POST':
         form = ObjetoTrocaForm(request.POST)
@@ -21,6 +22,7 @@ def criar_objeto_troca(request):
     return render(request, 'ObjetoTroca/criar_objeto_troca.html', {'form': form})
 
 @login_required
+@permission_required('objetotroca.add_objetotroca', raise_exception=True)
 def detalhar_objeto_troca(request, pk):
     item = get_object_or_404(ObjetoTroca, pk=pk)
     return render(request, 'ObjetoTroca/detalhar.html', {'item': item})

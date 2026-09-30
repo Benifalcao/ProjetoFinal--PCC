@@ -10,6 +10,7 @@ def index(request):
     return render(request, 'trocas/listar.html')
 
 @login_required
+@permission_required('trocas.add_trocas', raise_exception=True)
 def listar_trocas(request):
     trocas = Troca.objects.all()
     return render(request, 'trocas/listar.html', {'trocas': trocas})
@@ -29,6 +30,7 @@ def criar_troca(request):
 
 #DETALHAR
 @login_required
+@permission_required('trocas.view_trocas', raise_exception=True)
 def detalhar_troca(request, pk):
     troca = get_object_or_404(Troca, pk=pk)
     return render(request, 'trocas/detalhar.html', {'troca': troca})

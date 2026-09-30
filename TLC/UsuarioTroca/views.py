@@ -25,14 +25,14 @@ def criar_usuario_troca(request):
     return render(request, 'usuarioTroca/criar_usuario_troca.html', {'form': form})
 
 @login_required
-@permission_required('usuariotroca.add_usuariotroca', raise_exception=True)
+@permission_required('usuariotroca.view_usuariotroca', raise_exception=True)
 def detalhar_usuario_troca(request, pk):
     item = get_object_or_404(UsuarioTroca, pk=pk)
     # ALTERAÇÃO: Aponta para o template detalhar.html
     return render(request, 'usuarioTroca/detalhar.html', {'item': item})
     
 @login_required
-@permission_required('usuariotroca.add_usuariotroca', raise_exception=True)
+@permission_required('usuariotroca.change_usuariotroca', raise_exception=True)
 def editar_usuario_troca(request, pk):
     item = get_object_or_404(UsuarioTroca, pk=pk)
     if request.method == 'POST':
@@ -46,7 +46,7 @@ def editar_usuario_troca(request, pk):
     return render(request, 'usuarioTroca/editar.html', {'form': form, 'item': item})
 
 @login_required
-@permission_required('usuariotroca.add_usuariotroca', raise_exception=True)
+@permission_required('usuariotroca.delete_usuariotroca', raise_exception=True)
 def deletar_usuario_troca(request, pk):
     # ALTERAÇÃO: Correção total de alinhamento/indentação e remoção da necessidade de template extra
     item = get_object_or_404(UsuarioTroca, pk=pk)
