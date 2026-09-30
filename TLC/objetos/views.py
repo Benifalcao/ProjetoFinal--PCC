@@ -6,7 +6,7 @@ from .models import Objeto
 from .forms import ObjetoForm
 
 
-
+@login_required
 def listar_objetos(request):
     objetos = Objeto.objects.all()
 
@@ -14,7 +14,7 @@ def listar_objetos(request):
         'objetos': objetos
     })
 
-@login_required
+    @login_required
 def criar_objeto(request):
     if request.method == 'POST':
         form = ObjetoForm(request.POST)
@@ -26,7 +26,7 @@ def criar_objeto(request):
 
     return render(request, 'objetos/criar.html', {'form': form})
 # --Novasviews--
-
+    @login_required
 def detalhar_objeto(request, pk):
     objeto = get_object_or_404(Objeto, pk=pk)
     return render(request, 'objetos/detalhar.html', {

@@ -5,13 +5,13 @@ from django.contrib.auth.models import User
 from .models import Usuario
 from .forms import UsuarioForm
 
-
+@login_required
 def usuario_list(request):
     usuarios = Usuario.objects.all()
     context = {"usuarios": usuarios}
     return render(request, "usuario/usuario_list.html", context)
 
-
+@login_required
 def usuario_detail(request, usuario_id):
     usuario = get_object_or_404(Usuario, pk=usuario_id)
     return render(request, "usuario/usuario_detail.html", {"usuario": usuario})

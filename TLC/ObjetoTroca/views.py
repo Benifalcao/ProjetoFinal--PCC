@@ -3,6 +3,7 @@ from .models import ObjetoTroca
 from .forms import ObjetoTrocaForm
 from django.contrib.auth.decorators import login_required
 
+@login_required
 def listar_objeto_troca(request):
     objetos_troca = ObjetoTroca.objects.all()
     return render(request, 'ObjetoTroca/listar_objeto_troca.html', {'objetos_troca': objetos_troca})
@@ -17,7 +18,7 @@ def criar_objeto_troca(request):
     else:
         form = ObjetoTrocaForm()
     return render(request, 'ObjetoTroca/criar_objeto_troca.html', {'form': form})
-
+@login_required
 def detalhar_objeto_troca(request, pk):
     item = get_object_or_404(ObjetoTroca, pk=pk)
     return render(request, 'ObjetoTroca/detalhar.html', {'item': item})
