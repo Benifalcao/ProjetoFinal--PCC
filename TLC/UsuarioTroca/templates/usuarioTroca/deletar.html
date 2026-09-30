@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Confirmar Exclusão</h1>
+    
+    <p>Tem certeza que deseja excluir o vínculo do usuário <strong>{{ item.usuario.nome }}</strong> (Protocolo: {{ item.protocolo }})?</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Sim, Excluir</button>
+        <a href="{% url 'usuariotroca:listar' %}">Cancelar</a>
+    </form>
+{% endblock %}cd 

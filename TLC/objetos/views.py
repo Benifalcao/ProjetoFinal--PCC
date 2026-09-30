@@ -1,8 +1,10 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from usuario.models import Usuario
 from django.shortcuts import render, redirect
 from .models import Objeto
 from .forms import ObjetoForm
+
 
 
 def listar_objetos(request):

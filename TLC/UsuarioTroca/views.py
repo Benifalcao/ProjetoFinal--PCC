@@ -1,12 +1,14 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import UsuarioTroca
 from .forms import UsuarioTrocaForm
+from django.contrib.auth.decorators import login_required
 
 def listar_usuario_troca(request):
     usuarios_troca = UsuarioTroca.objects.all()
     # ALTERAÇÃO: Caminho do template ajustado para o nome exato da pasta 'usuarioTroca'
     return render(request, 'usuarioTroca/listar_usuario_troca.html', {'usuarios_troca': usuarios_troca})
 
+@login_required
 def criar_usuario_troca(request):
     if request.method == 'POST':
         form = UsuarioTrocaForm(request.POST)
@@ -22,7 +24,8 @@ def detalhar_usuario_troca(request, pk):
     item = get_object_or_404(UsuarioTroca, pk=pk)
     # ALTERAÇÃO: Aponta para o template detalhar.html
     return render(request, 'usuarioTroca/detalhar.html', {'item': item})
-
+    
+@login_required
 def editar_usuario_troca(request, pk):
     item = get_object_or_404(UsuarioTroca, pk=pk)
     if request.method == 'POST':
@@ -35,6 +38,7 @@ def editar_usuario_troca(request, pk):
     # ALTERAÇÃO: Passa 'form' e 'item' para a edição
     return render(request, 'usuarioTroca/editar.html', {'form': form, 'item': item})
 
+@login_required
 def deletar_usuario_troca(request, pk):
     # ALTERAÇÃO: Correção total de alinhamento/indentação e remoção da necessidade de template extra
     item = get_object_or_404(UsuarioTroca, pk=pk)
