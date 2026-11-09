@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block title %}Bem Vindo{% endblock %}
+
+{% block nav_dashboard %}active{% endblock %}
+
+{% block page_heading %}
+<div class="page-heading">
+  <div class="page-heading-copy">
+    <span class="page-icon"><i class="bi bi-house-heart" aria-hidden="true"></i></span>
+    <div>
+      <p class="eyebrow mb-1">Início</p>
+      <h1 class="h3 mb-1">Bem-vindo ao Sistemas de Trocas Locais</h1>
+      <p class="text-muted mb-0">Troque objetos com pessoas da sua região, de forma simples e organizada.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<section class="row g-3">
+  <div class="col-12">
+    <div class="panel">
+      <div class="panel-header">
+        <div>
+          <h2 class="h5 mb-1 section-title"><i class="bi bi-info-circle" aria-hidden="true"></i><span>O que é este site?</span></h2>
+        </div>
+      </div>
+      <p class="mb-3">
+        O <strong>Sistemas de Trocas Locais</strong> é uma plataforma para cadastrar objetos e organizar trocas entre pessoas.
+        Em vez de comprar algo novo, você oferece um objeto que não usa mais e combina a troca por outro que precisa.
+      </p>
+      <p class="mb-0">
+        Aqui você registra os usuários, cadastra os objetos disponíveis, cria propostas de troca e acompanha
+        quais pessoas e quais objetos participam de cada troca.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="row g-3 mt-1">
+  <div class="col-12">
+    <h2 class="h5 mb-0 section-title"><i class="bi bi-grid" aria-hidden="true"></i><span>O que você pode fazer</span></h2>
+  </div>
+
+  <div class="col-12 col-md-6 col-xl-4">
+    <div class="panel h-100">
+      <h3 class="h6 section-title"><i class="bi bi-people" aria-hidden="true"></i><span>Usuários</span></h3>
+      <p class="text-muted">Cadastre as pessoas que participam das trocas, com nome, login e telefone.</p>
+      <a href="{% url 'usuario:usuario_list' %}" class="btn btn-light btn-sm">Ver usuários</a>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6 col-xl-4">
+    <div class="panel h-100">
+      <h3 class="h6 section-title"><i class="bi bi-box-seam" aria-hidden="true"></i><span>Objetos</span></h3>
+      <p class="text-muted">Registre os objetos disponíveis, com descrição, valor de avaliação e status.</p>
+      <a href="{% url 'listar_objetos' %}" class="btn btn-light btn-sm">Ver objetos</a>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6 col-xl-4">
+    <div class="panel h-100">
+      <h3 class="h6 section-title"><i class="bi bi-arrow-repeat" aria-hidden="true"></i><span>Trocas</span></h3>
+      <p class="text-muted">Crie propostas de troca, informe ofertante e interessado e acompanhe o status de cada uma.</p>
+      <a href="{% url 'trocas:listar_trocas' %}" class="btn btn-light btn-sm">Ver trocas</a>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6 col-xl-6">
+    <div class="panel h-100">
+      <h3 class="h6 section-title"><i class="bi bi-person-lines-fill" aria-hidden="true"></i><span>Usuário troca</span></h3>
+      <p class="text-muted">Vincule usuários a uma troca e acompanhe o status, o protocolo e as datas de cada vínculo.</p>
+      <a href="{% url 'usuariotroca:listar' %}" class="btn btn-light btn-sm">Ver vínculos</a>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6 col-xl-6">
+    <div class="panel h-100">
+      <h3 class="h6 section-title"><i class="bi bi-arrow-left-right" aria-hidden="true"></i><span>Objeto troca</span></h3>
+      <p class="text-muted">Defina quais objetos, e em que quantidade, fazem parte de cada troca.</p>
+      <a href="{% url 'objetotroca:listar' %}" class="btn btn-light btn-sm">Ver objetos nas trocas</a>
+    </div>
+  </div>
+</section>
+
+<section class="row g-3 mt-1">
+  <div class="col-12">
+    <div class="panel">
+      <div class="panel-header">
+        <div>
+          <h2 class="h5 mb-1 section-title"><i class="bi bi-signpost-split" aria-hidden="true"></i><span>Como fazer uma troca</span></h2>
+          <p class="text-muted mb-0">Siga este caminho para registrar uma troca completa.</p>
+        </div>
+      </div>
+      <ol class="mb-0">
+        <li class="mb-2"><strong>Cadastre os usuários</strong> que vão participar da troca.</li>
+        <li class="mb-2"><strong>Cadastre os objetos</strong> que cada pessoa quer oferecer.</li>
+        <li class="mb-2"><strong>Crie a troca</strong>, informando ofertante, interessado e a data inicial.</li>
+        <li class="mb-2"><strong>Vincule os usuários</strong> à troca em "Usuário troca".</li>
+        <li class="mb-0"><strong>Adicione os objetos</strong> à troca em "Objeto troca" e acompanhe o status até a conclusão.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -20,12 +20,14 @@ Including another URLconf
 
 
 
-
 from django.contrib import admin
+from django.contrib.auth.decorators import login_required
 from django.urls import include, path
-from TLCC import views as auth_views 
+from django.views.generic import TemplateView
+from TLCC import views as auth_views
 
 urlpatterns = [
+    path('', login_required(TemplateView.as_view(template_name='bem_vindo.html'), login_url='login'), name='bem_vindo'),
     path('login/', auth_views.login_view, name='login'),
     path('logout/', auth_views.logout_view, name='logout'),
     path('trocas/', include('trocas.urls')),
