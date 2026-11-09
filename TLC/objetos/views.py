@@ -15,8 +15,8 @@ def listar_objetos(request):
         'objetos': objetos
     })
 
-    @login_required
-    @permission_required('objetos.add_objeto', raise_exception=True)
+@login_required
+@permission_required('objetos.add_objeto', raise_exception=True)
 def criar_objeto(request):
     if request.method == 'POST':
         form = ObjetoForm(request.POST)
@@ -28,8 +28,8 @@ def criar_objeto(request):
 
     return render(request, 'objetos/criar.html', {'form': form})
 # --Novasviews--
-    @login_required
-    @permission_required('objetos.view_objeto', raise_exception=True)
+@login_required
+@permission_required('objetos.view_objeto', raise_exception=True)
 def detalhar_objeto(request, pk):
     objeto = get_object_or_404(Objeto, pk=pk)
     return render(request, 'objetos/detalhar.html', {

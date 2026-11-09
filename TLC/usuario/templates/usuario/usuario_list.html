@@ -1,4 +1,9 @@
-{% extends "base.html" %}
+{% extends 'usuario/base.html' %}
+
+{% block title %}Usuários{% endblock %}
+
+{% block nav_usuarios %}active{% endblock %}
+
 {% block content %}
 
 {% if usuarios %}
@@ -12,3 +17,4 @@
 {% endif %}
 
 {% endblock %}
+
