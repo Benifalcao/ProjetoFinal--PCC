@@ -1,7 +1,10 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+
+{% block title %}Detalhes do vínculo{% endblock %}
+
+{% block nav_usuario_troca %}active{% endblock %}
 
 {% block content %}
-    <!-- Exibição dos atributos do Diagrama de Classes -->
     <h1>Detalhes do Vínculo #{{ item.id }}</h1>
     <p><strong>Usuário:</strong> {{ item.usuario.nome }}</p>
     <p><strong>Troca:</strong> Troca #{{ item.troca.pk }}</p>

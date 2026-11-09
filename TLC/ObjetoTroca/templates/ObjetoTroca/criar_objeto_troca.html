@@ -1,5 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Adicionar objeto à troca{% endblock %}
+
+{% block nav_objeto_troca %}active{% endblock %}
+
+{% block content %}
+
+<h2>Adicionar Objeto à Troca</h2>
+
 <form method="post">
-{% csrf_token %}
-{{ form.as_p }}
-<input type="submit" value="Salvar">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Salvar">
 </form>
+
+<br>
+<a href="{% url 'objetotroca:listar' %}">Cancelar</a>
+
+{% endblock %}

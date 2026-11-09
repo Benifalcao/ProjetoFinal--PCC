@@ -1,11 +1,18 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+
+{% block title %}Criar vínculo{% endblock %}
+
+{% block nav_usuario_troca %}active{% endblock %}
 
 {% block content %}
-    <h2>Cadastrar / Editar</h2>
+    <h2>Criar Novo Vínculo</h2>
 
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Salvar">
     </form>
+
+    <br>
+    <a href="{% url 'usuariotroca:listar' %}">Cancelar</a>
 {% endblock %}

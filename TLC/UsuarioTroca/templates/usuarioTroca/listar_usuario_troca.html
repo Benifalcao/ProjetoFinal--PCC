@@ -1,3 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Usuários em Trocas{% endblock %}
+
+{% block nav_usuario_troca %}active{% endblock %}
+
+{% block content %}
+
 <h2>Lista de Usuários em Trocas</h2>
 <a href="{% url 'usuariotroca:criar' %}">Criar Novo Vínculo</a>
 <br><br>
@@ -5,11 +13,10 @@
 {% if usuarios_troca %}
     <ul>
     {% for ut in usuarios_troca %}
-        <!-- ALTERAÇÃO: Estruturação dos links dentro do <li> e verificação do status -->
         <li>
-            {{ ut.usuario.nome }} - Troca #{{ ut.troca.pk }} {% if ut.status %}({{ ut.status }}){% endif %} - 
-            <a href="{% url 'usuariotroca:detalhar' ut.id %}">Detalhar</a> | 
-            <a href="{% url 'usuariotroca:editar' ut.id %}">Editar</a> | 
+            {{ ut.usuario.nome }} - Troca #{{ ut.troca.pk }} {% if ut.status %}({{ ut.status }}){% endif %} -
+            <a href="{% url 'usuariotroca:detalhar' ut.id %}">Detalhar</a> |
+            <a href="{% url 'usuariotroca:editar' ut.id %}">Editar</a> |
             <a href="{% url 'usuariotroca:deletar' ut.id %}">Deletar</a>
         </li>
     {% endfor %}
@@ -17,3 +24,5 @@
 {% else %}
     <p>Nenhum registro ainda.</p>
 {% endif %}
+
+{% endblock %}
