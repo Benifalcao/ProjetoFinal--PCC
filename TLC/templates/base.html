@@ -30,30 +30,37 @@
      <nav class="sidebar-nav">
   <a class="nav-link {% block nav_dashboard %}{% endblock %}" href="#">
     <span class="nav-icon"><i class="bi bi-speedometer2" aria-hidden="true"></i></span>
-    <span class="nav-text">Bem Vindo</span>
+    <span class="nav-text">Dashboard</span>
   </a>
-  <a class="nav-link {% block nav_usuarios %}{% endblock %}" href="/usuario/">
+  <a class="nav-link {% block nav_usuarios %}{% endblock %}" href="{% url 'usuario:usuario_list' %}">
     <span class="nav-icon"><i class="bi bi-people" aria-hidden="true"></i></span>
     <span class="nav-text">Usuários</span>
   </a>
-  <a class="nav-link {% block nav_add_usuario %}{% endblock %}" href="/usuario/novo/">
+  <a class="nav-link {% block nav_add_usuario %}{% endblock %}" href="{% url 'usuario:usuario_create' %}">
     <span class="nav-icon"><i class="bi bi-person-plus" aria-hidden="true"></i></span>
     <span class="nav-text">Adicionar usuário</span>
   </a>
-
-  <a class="nav-link {% block nav_objetos %}{% endblock %}" href="/objetos/">
+  <a class="nav-link {% block nav_objetos %}{% endblock %}" href="{% url 'listar_objetos' %}">
     <span class="nav-icon"><i class="bi bi-box-seam" aria-hidden="true"></i></span>
     <span class="nav-text">Objetos</span>
   </a>
-  <a class="nav-link {% block nav_add_objeto %}{% endblock %}" href="/objetos/criar/">
+  <a class="nav-link {% block nav_add_objeto %}{% endblock %}" href="{% url 'criar_objeto' %}">
     <span class="nav-icon"><i class="bi bi-plus-square" aria-hidden="true"></i></span>
     <span class="nav-text">Cadastrar objeto</span>
   </a>
-  <a class="nav-link {% block nav_usuario_troca %}{% endblock %}" href="/usuario-troca/">
+  <a class="nav-link {% block nav_trocas %}{% endblock %}" href="{% url 'trocas:listar_trocas' %}">
+    <span class="nav-icon"><i class="bi bi-arrow-repeat" aria-hidden="true"></i></span>
+    <span class="nav-text">Trocas</span>
+  </a>
+  <a class="nav-link {% block nav_add_troca %}{% endblock %}" href="{% url 'trocas:criar_troca' %}">
+    <span class="nav-icon"><i class="bi bi-plus-circle" aria-hidden="true"></i></span>
+    <span class="nav-text">Cadastrar troca</span>
+  </a>
+  <a class="nav-link {% block nav_usuario_troca %}{% endblock %}" href="{% url 'usuariotroca:listar' %}">
     <span class="nav-icon"><i class="bi bi-person-lines-fill" aria-hidden="true"></i></span>
     <span class="nav-text">Usuário troca</span>
   </a>
-  <a class="nav-link {% block nav_objeto_troca %}{% endblock %}" href="/objeto-troca/criar/">
+  <a class="nav-link {% block nav_objeto_troca %}{% endblock %}" href="{% url 'objetotroca:listar' %}">
     <span class="nav-icon"><i class="bi bi-arrow-left-right" aria-hidden="true"></i></span>
     <span class="nav-text">Objeto troca</span>
   </a>

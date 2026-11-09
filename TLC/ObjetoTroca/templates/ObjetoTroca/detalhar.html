@@ -4,16 +4,57 @@
 
 {% block nav_objeto_troca %}active{% endblock %}
 
+{% block page_heading %}
+<div class="page-heading">
+  <div class="page-heading-copy">
+    <span class="page-icon"><i class="bi bi-arrow-left-right" aria-hidden="true"></i></span>
+    <div>
+      <p class="eyebrow mb-1">Trocas</p>
+      <h1 class="h3 mb-1">Detalhes do Objeto na Troca #{{ item.id }}</h1>
+      <p class="text-muted mb-0">Informações completas do objeto dentro da troca.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
 {% block content %}
+<section class="row g-3">
+  <div class="col-12 col-xl-8">
+    <div class="panel">
+      <div class="panel-header">
+        <div>
+          <h2 class="h5 mb-1 section-title"><i class="bi bi-info-circle" aria-hidden="true"></i><span>Informações</span></h2>
+        </div>
+      </div>
 
-<h1>Detalhes do Objeto na Troca #{{ item.id }}</h1>
-<p><strong>Objeto:</strong> {{ item.objeto.nome }}</p>
-<p><strong>Troca:</strong> Troca #{{ item.troca.pk }}</p>
-<p><strong>Quantidade:</strong> {{ item.quant }}</p>
-<p><strong>Data da Troca:</strong> {{ item.data_troca }}</p>
-<p><strong>Observação:</strong> {{ item.obsevação }}</p>
+      <div class="row g-3">
+        <div class="col-md-6">
+          <p class="text-muted mb-1">Objeto</p>
+          <p class="fw-semibold mb-0">{{ item.objeto.nome }}</p>
+        </div>
+        <div class="col-md-6">
+          <p class="text-muted mb-1">Troca</p>
+          <p class="fw-semibold mb-0">Troca #{{ item.troca.pk }}</p>
+        </div>
+        <div class="col-md-6">
+          <p class="text-muted mb-1">Quantidade</p>
+          <p class="mb-0"><span class="badge text-bg-primary">{{ item.quant }} un.</span></p>
+        </div>
+        <div class="col-md-6">
+          <p class="text-muted mb-1">Data da Troca</p>
+          <p class="fw-semibold mb-0">{{ item.data_troca }}</p>
+        </div>
+        <div class="col-12">
+          <p class="text-muted mb-1">Observação</p>
+          <p class="mb-0">{{ item.obsevação|default:"-" }}</p>
+        </div>
+      </div>
 
-<br>
-<a href="{% url 'objetotroca:listar' %}">Voltar para a lista</a>
-
+      <div class="d-flex justify-content-end gap-2 mt-4">
+        <a href="{% url 'objetotroca:listar' %}" class="btn btn-light"><i class="bi bi-arrow-left" aria-hidden="true"></i> Voltar para a lista</a>
+        <a href="{% url 'objetotroca:editar' item.id %}" class="btn btn-primary"><i class="bi bi-pencil" aria-hidden="true"></i> Editar</a>
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock %}

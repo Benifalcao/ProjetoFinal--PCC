@@ -4,14 +4,61 @@
 
 {% block nav_usuario_troca %}active{% endblock %}
 
+{% block page_heading %}
+<div class="page-heading">
+  <div class="page-heading-copy">
+    <span class="page-icon"><i class="bi bi-person-lines-fill" aria-hidden="true"></i></span>
+    <div>
+      <p class="eyebrow mb-1">Trocas</p>
+      <h1 class="h3 mb-1">Detalhes do Vínculo #{{ item.id }}</h1>
+      <p class="text-muted mb-0">Informações completas do vínculo entre usuário e troca.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
 {% block content %}
-    <h1>Detalhes do Vínculo #{{ item.id }}</h1>
-    <p><strong>Usuário:</strong> {{ item.usuario.nome }}</p>
-    <p><strong>Troca:</strong> Troca #{{ item.troca.pk }}</p>
-    <p><strong>Status:</strong> {{ item.status }}</p>
-    <p><strong>Protocolo:</strong> {{ item.protocolo }}</p>
-    <p><strong>Data de Início:</strong> {{ item.dataInicio }}</p>
-    <p><strong>Data de Renovação:</strong> {{ item.DataRenovacao }}</p>
-    <br>
-    <a href="{% url 'usuariotroca:listar' %}">Voltar para a lista</a>
+<section class="row g-3">
+  <div class="col-12 col-xl-8">
+    <div class="panel">
+      <div class="panel-header">
+        <div>
+          <h2 class="h5 mb-1 section-title"><i class="bi bi-info-circle" aria-hidden="true"></i><span>Informações</span></h2>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-md-6">
+          <p class="text-muted mb-1">Usuário</p>
+          <p class="fw-semibold mb-0">{{ item.usuario.nome }}</p>
+        </div>
+        <div class="col-md-6">
+          <p class="text-muted mb-1">Troca</p>
+          <p class="fw-semibold mb-0">Troca #{{ item.troca.pk }}</p>
+        </div>
+        <div class="col-md-6">
+          <p class="text-muted mb-1">Status</p>
+          <p class="mb-0"><span class="badge text-bg-primary">{{ item.status }}</span></p>
+        </div>
+        <div class="col-md-6">
+          <p class="text-muted mb-1">Protocolo</p>
+          <p class="fw-semibold mb-0">{{ item.protocolo }}</p>
+        </div>
+        <div class="col-md-6">
+          <p class="text-muted mb-1">Data de Início</p>
+          <p class="fw-semibold mb-0">{{ item.dataInicio }}</p>
+        </div>
+        <div class="col-md-6">
+          <p class="text-muted mb-1">Data de Renovação</p>
+          <p class="fw-semibold mb-0">{{ item.DataRenovacao }}</p>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-end gap-2 mt-4">
+        <a href="{% url 'usuariotroca:listar' %}" class="btn btn-light"><i class="bi bi-arrow-left" aria-hidden="true"></i> Voltar para a lista</a>
+        <a href="{% url 'usuariotroca:editar' item.id %}" class="btn btn-primary"><i class="bi bi-pencil" aria-hidden="true"></i> Editar</a>
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock %}

@@ -1,10 +1,53 @@
 {% extends "base.html" %}
 
-{% block content %}
-<h2>{{ objeto.nome }}</h2>
-<p>{{ objeto.descricao }}</p>
+{% block title %}{{ objeto.nome }}{% endblock %}
 
-<a href="{% url 'editar_objeto' objeto.pk %}">Editar</a>
-<a href="{% url 'deletar_objeto' objeto.pk %}">Deletar</a>
-<a href="{% url 'listar_objetos' %}">Voltar</a>
+{% block nav_objetos %}active{% endblock %}
+
+{% block page_heading %}
+<div class="page-heading">
+  <div class="page-heading-copy">
+    <span class="page-icon"><i class="bi bi-box-seam" aria-hidden="true"></i></span>
+    <div>
+      <p class="eyebrow mb-1">Objetos</p>
+      <h1 class="h3 mb-1">{{ objeto.nome }}</h1>
+      <p class="text-muted mb-0">Informações completas do objeto.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<section class="row g-3">
+  <div class="col-12 col-xl-8">
+    <div class="panel">
+      <div class="panel-header">
+        <div>
+          <h2 class="h5 mb-1 section-title"><i class="bi bi-info-circle" aria-hidden="true"></i><span>Informações</span></h2>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-12">
+          <p class="text-muted mb-1">Descrição</p>
+          <p class="mb-0">{{ objeto.descricao|default:"-" }}</p>
+        </div>
+        <div class="col-md-6">
+          <p class="text-muted mb-1">Valor</p>
+          <p class="fw-semibold mb-0">{{ objeto.valor_avaliacao }}</p>
+        </div>
+        <div class="col-md-6">
+          <p class="text-muted mb-1">Status</p>
+          <p class="mb-0"><span class="badge text-bg-primary">{{ objeto.status }}</span></p>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-end gap-2 mt-4">
+        <a href="{% url 'listar_objetos' %}" class="btn btn-light"><i class="bi bi-arrow-left" aria-hidden="true"></i> Voltar</a>
+        <a href="{% url 'deletar_objeto' objeto.pk %}" class="btn btn-danger"><i class="bi bi-trash" aria-hidden="true"></i> Deletar</a>
+        <a href="{% url 'editar_objeto' objeto.pk %}" class="btn btn-primary"><i class="bi bi-pencil" aria-hidden="true"></i> Editar</a>
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock %}
