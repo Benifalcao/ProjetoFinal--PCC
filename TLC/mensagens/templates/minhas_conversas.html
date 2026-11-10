@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Mensagens{% endblock %}
+
+{% block nav_mensagens %}active{% endblock %}
+
+{% block page_heading %}
+<div class="page-heading">
+  <div class="page-heading-copy">
+    <span class="page-icon"><i class="bi bi-chat-dots" aria-hidden="true"></i></span>
+    <div>
+      <p class="eyebrow mb-1">Mensagens</p>
+      <h1 class="h3 mb-1">Minhas conversas</h1>
+      <p class="text-muted mb-0">Converse com os outros participantes de cada troca.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<section class="panel">
+  <div class="panel-header">
+    <div>
+      <h2 class="h5 mb-1 section-title"><i class="bi bi-table" aria-hidden="true"></i><span>Trocas com conversa</span></h2>
+      <p class="text-muted mb-0">Abra a conversa da troca que você participa.</p>
+    </div>
+    <input class="form-control form-control-sm table-search" type="search" placeholder="Buscar" data-table-search="conversasTable" aria-label="Buscar conversas">
+  </div>
+
+  {% if trocas %}
+  <div class="table-responsive">
+    <table class="table align-middle mb-0" id="conversasTable" data-searchable-table>
+      <thead>
+        <tr>
+          <th>Troca</th>
+          <th>Status</th>
+          <th>Ofertantes</th>
+          <th>Interessado</th>
+          <th>Mensagens</th>
+          <th class="text-end">Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for troca in trocas %}
+        <tr>
+          <td class="fw-semibold">#{{ troca.id }}</td>
+          <td><span class="badge text-bg-primary">{{ troca.status }}</span></td>
+          <td>{{ troca.ofertantes }}</td>
+          <td>{{ troca.interessado }}</td>
+          <td>{{ troca.total_mensagens }}</td>
+          <td class="text-end">
+            <a href="{% url 'mensagens:conversa' troca.id %}" class="btn btn-primary btn-sm"><i class="bi bi-chat-dots" aria-hidden="true"></i> Abrir conversa</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <p class="text-muted mb-0">Você ainda não participa de nenhuma troca.</p>
+  {% endif %}
+</section>
+{% endblock %}

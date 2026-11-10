@@ -22,11 +22,13 @@
   <div class="panel-header">
     <div>
       <h2 class="h5 mb-1 section-title"><i class="bi bi-table" aria-hidden="true"></i><span>Lista de usuários</span></h2>
-      <p class="text-muted mb-0">Pesquise, visualize, edite ou exclua um usuário.</p>
+      <p class="text-muted mb-0">Pesquise e visualize os usuários. Você só edita ou exclui a sua própria conta.</p>
     </div>
     <div class="d-flex gap-2">
       <input class="form-control form-control-sm table-search" type="search" placeholder="Buscar" data-table-search="usuariosTable" aria-label="Buscar usuários">
+      {% if user.is_superuser %}
       <a href="{% url 'usuario:usuario_create' %}" class="btn btn-primary btn-sm text-nowrap"><i class="bi bi-plus-lg" aria-hidden="true"></i> Adicionar usuário</a>
+      {% endif %}
     </div>
   </div>
 
@@ -44,13 +46,15 @@
       <tbody>
         {% for usuario in usuarios %}
         <tr>
-          <td class="fw-semibold">{{ usuario.nome }}</td>
+          <td class="fw-semibold">{{ usuario.nome }}{% if usuario.pk == user.pk %} <span class="badge text-bg-success">Você</span>{% endif %}</td>
           <td>{{ usuario.username }}</td>
           <td>{{ usuario.telefone|default:"-" }}</td>
           <td class="text-end">
             <a href="{% url 'usuario:usuario_detail' usuario.id %}" class="btn btn-light btn-sm"><i class="bi bi-eye" aria-hidden="true"></i> Ver detalhes</a>
+            {% if user.is_superuser or usuario.pk == user.pk %}
             <a href="{% url 'usuario:usuario_editar' usuario.id %}" class="btn btn-light btn-sm"><i class="bi bi-pencil" aria-hidden="true"></i> Editar</a>
             <a href="{% url 'usuario:usuario_excluir' usuario.id %}" class="btn btn-danger btn-sm"><i class="bi bi-trash" aria-hidden="true"></i> Excluir</a>
+            {% endif %}
           </td>
         </tr>
         {% endfor %}

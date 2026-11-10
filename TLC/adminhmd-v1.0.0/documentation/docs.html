@@ -76,18 +76,19 @@
       </nav>
 
       <main class="dashboard-content">
-        <div class="container-fluid px-3 px-lg-4 py-4">
-          
-          <div class="page-heading mb-4">
-            <div class="page-heading-copy">
-              <span class="page-icon bg-primary text-white"><i class="bi bi-journal-text" aria-hidden="true"></i></span>
-              <div>
-                <p class="eyebrow mb-1">Documentation</p>
-                <h1 class="h3 mb-1">Getting Started</h1>
-                <p class="text-muted mb-0">Everything you need to know to get started with adminHMD dashboard template.</p>
-              </div>
-            </div>
-          </div>
+  <div class="container-fluid px-3 px-lg-4 py-4">
+    {% for message in messages %}
+    <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} alert-dismissible fade show" role="alert">
+      {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+    </div>
+    {% endfor %}
+
+    {% block page_heading %}{% endblock %}
+
+    {% block content %}{% endblock %}
+  </div>
+</main>
 
           <!-- Section: Introduction -->
           <div class="panel mb-4" id="introduction">

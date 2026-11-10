@@ -34,7 +34,6 @@ ALLOWED_HOSTS = []
 
 
 
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -42,14 +41,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'trocas',
     'objetos',
     'usuario',
-    'trocas',
     'UsuarioTroca',
     'ObjetoTroca',
+    'mensagens',
 ]
-
 
 
 
@@ -146,5 +144,6 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'usuario:usuario_list'
+LOGIN_REDIRECT_URL = 'bem_vindo'
 LOGOUT_REDIRECT_URL = 'login'
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
