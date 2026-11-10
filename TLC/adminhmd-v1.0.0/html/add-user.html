@@ -77,11 +77,11 @@
         </a>
       </nav>
 
-      <div class="sidebar-user">
-        <img class="avatar-img avatar-md sidebar-user-avatar" src="../assets/images/avatar/avatar.jpg" alt="Admin Hasan">
-        <strong>Admin Hasan</strong>
-        <small>Active Workspace</small>
-      </div>
+    <div class="sidebar-user">
+  <img class="avatar-img avatar-md sidebar-user-avatar" src="{% static 'assets/images/avatar/avatar.jpg' %}" alt="{{ user.get_username }}">
+  <strong>{{ user.get_username }}</strong>
+  <small>{% if user.is_superuser %}Administrador master{% else %}Usuário comum{% endif %}</small>
+</div>
 
       <div class="sidebar-footer">
         <span class="status-dot"></span>

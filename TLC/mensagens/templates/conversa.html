@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Conversa da troca #{{ troca.id }}{% endblock %}
+
+{% block nav_mensagens %}active{% endblock %}
+
+{% block page_heading %}
+<div class="page-heading">
+  <div class="page-heading-copy">
+    <span class="page-icon"><i class="bi bi-chat-dots" aria-hidden="true"></i></span>
+    <div>
+      <p class="eyebrow mb-1">Mensagens</p>
+      <h1 class="h3 mb-1">Conversa da Troca #{{ troca.id }}</h1>
+      <p class="text-muted mb-0">{{ troca.ofertantes }} e {{ troca.interessado }} • Status: {{ troca.status }}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<section class="row g-3">
+  <div class="col-12 col-xl-8">
+    <div class="panel">
+      <div class="panel-header">
+        <div>
+          <h2 class="h5 mb-1 section-title"><i class="bi bi-chat-text" aria-hidden="true"></i><span>Mensagens</span></h2>
+          <p class="text-muted mb-0">Combine os detalhes da troca aqui.</p>
+        </div>
+        <a href="{% url 'trocas:detalhar_troca' troca.id %}" class="btn btn-light btn-sm"><i class="bi bi-arrow-left" aria-hidden="true"></i> Ver troca</a>
+      </div>
+
+      <div id="caixa-mensagens" class="d-flex flex-column gap-2 mb-4" style="max-height: 420px; overflow-y: auto;">
+        {% for m in mensagens %}
+        <div class="p-3 rounded-3 {% if m.remetente_id == request.user.id %}bg-primary text-white align-self-end{% else %}bg-body-secondary align-self-start{% endif %}" style="max-width: 75%;">
+          <div class="small fw-semibold mb-1">{{ m.nome_remetente }}</div>
+          <div style="white-space: pre-wrap;">{{ m.texto }}</div>
+          <div class="small mt-1 opacity-75">{{ m.criada_em|date:"d/m/Y H:i" }}</div>
+        </div>
+        {% empty %}
+        <p class="text-muted text-center my-4">Nenhuma mensagem ainda. Comece a conversa!</p>
+        {% endfor %}
+      </div>
+
+      <form method="post">
+        {% csrf_token %}
+        {% for error in form.texto.errors %}
+        <div class="text-danger small mb-2">{{ error }}</div>
+        {% endfor %}
+        {{ form.texto }}
+        <div class="d-flex justify-content-end mt-3">
+          <button class="btn btn-primary" type="submit"><i class="bi bi-send" aria-hidden="true"></i> Enviar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  var caixa = document.getElementById('caixa-mensagens');
+  caixa.scrollTop = caixa.scrollHeight;
+
+  var campo = document.querySelector('textarea[name="texto"]');
+  setInterval(function () {
+    if (!campo.value.trim()) { location.reload(); }
+  }, 15000);
+</script>
+{% endblock %}
