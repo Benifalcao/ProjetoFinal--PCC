@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Troca
 from .forms import TrocaForm
 from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib import messages
 
 
 @login_required
@@ -24,6 +25,7 @@ def criar_troca(request):
         form = TrocaForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Troca cadastrada com sucesso!')
             return redirect('trocas:listar_trocas')
     else:
         form = TrocaForm()
@@ -47,6 +49,7 @@ def editar_troca(request, pk):
         form = TrocaForm(request.POST, instance=troca)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Troca editada com sucesso!')
             return redirect('trocas:listar_trocas')
     else:
         form = TrocaForm(instance=troca)
@@ -59,4 +62,5 @@ def editar_troca(request, pk):
 def deletar_troca(request, pk):
     troca = get_object_or_404(Troca, pk=pk)
     troca.delete()
+    messages.success(request, 'Troca excluída com sucesso!')
     return redirect('trocas:listar_trocas')

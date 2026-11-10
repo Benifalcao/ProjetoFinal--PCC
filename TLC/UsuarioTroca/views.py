@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import UsuarioTroca
 from .forms import UsuarioTrocaForm
 from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib import messages
 
 
 @login_required
@@ -18,6 +19,7 @@ def criar_usuario_troca(request):
         form = UsuarioTrocaForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Vínculo do usuário criado com sucesso!')
             return redirect('usuariotroca:listar')
     else:
         form = UsuarioTrocaForm()
@@ -39,6 +41,7 @@ def editar_usuario_troca(request, pk):
         form = UsuarioTrocaForm(request.POST, instance=item)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Vínculo do usuário editado com sucesso!')
             return redirect('usuariotroca:listar')
     else:
         form = UsuarioTrocaForm(instance=item)
@@ -51,4 +54,5 @@ def deletar_usuario_troca(request, pk):
     # ALTERAÇÃO: Correção total de alinhamento/indentação e remoção da necessidade de template extra
     item = get_object_or_404(UsuarioTroca, pk=pk)
     item.delete()
+    messages.success(request, 'Vínculo do usuário excluído com sucesso!')
     return redirect('usuariotroca:listar')

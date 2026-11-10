@@ -4,6 +4,7 @@ from usuario.models import Usuario
 from django.shortcuts import render, redirect
 from .models import Objeto
 from .forms import ObjetoForm
+from django.contrib import messages
 
 
 @login_required
@@ -22,6 +23,7 @@ def criar_objeto(request):
         form = ObjetoForm(request.POST)
         if form.is_valid():
             form.save()  # Salva o objeto com o usuario selecionado no dropdown!
+            messages.success(request, 'Objeto cadastrado com sucesso!')
             return redirect('listar_objetos')  # Ajuste para a sua rota de listagem
     else:
         form = ObjetoForm()
@@ -43,6 +45,7 @@ def editar_objeto(request, pk):
         form = ObjetoForm(request.POST, request.FILES, instance=objeto)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Objeto editado com sucesso!')
             return redirect('detalhar_objeto', pk=objeto.pk)
     else:
         form = ObjetoForm(instance=objeto)
@@ -56,6 +59,7 @@ def deletar_objeto(request, pk):
     objeto = get_object_or_404(Objeto, pk=pk)
     if request.method == 'POST':
         objeto.delete()
+        messages.success(request, 'Objeto excluído com sucesso!')
         return redirect('listar_objetos')
     return render(request, 'objetos/deletar.html', {
         'objeto': objeto

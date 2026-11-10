@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import ObjetoTroca
 from .forms import ObjetoTrocaForm
 from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib import messages
 
 @login_required
 @permission_required('objetotroca.add_objetotroca', raise_exception=True)
@@ -16,6 +17,7 @@ def criar_objeto_troca(request):
         form = ObjetoTrocaForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Vínculo do objeto criado com sucesso!')
             return redirect('objetotroca:listar')
     else:
         form = ObjetoTrocaForm()
@@ -35,6 +37,7 @@ def editar_objeto_troca(request, pk):
         form = ObjetoTrocaForm(request.POST, instance=item)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Vínculo do objeto editado com sucesso!')
             return redirect('objetotroca:listar')
     else:
         form = ObjetoTrocaForm(instance=item)
@@ -45,4 +48,5 @@ def editar_objeto_troca(request, pk):
 def deletar_objeto_troca(request, pk):
     item = get_object_or_404(ObjetoTroca, pk=pk)
     item.delete()
+    messages.success(request, 'Vínculo do objeto excluído com sucesso!')
     return redirect('objetotroca:listar')
