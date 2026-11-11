@@ -4,6 +4,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 from django.utils.http import url_has_allowed_host_and_scheme
 
+from usuario.permissoes import obter_grupo_comum
+
 
 def login_view(request):
     if request.user.is_authenticated:
@@ -13,6 +15,8 @@ def login_view(request):
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             user = form.get_user()
+            if not user.is_superuser:
+                user.groups.add(obter_grupo_comum())
             login(request, user)
             messages.success(request, f'Bem-vindo, {user.get_username()}!')
             proximo = request.POST.get('next') or request.GET.get('next')

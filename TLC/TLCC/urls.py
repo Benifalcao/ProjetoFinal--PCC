@@ -17,7 +17,6 @@ urlpatterns = [
     path('usuario/', include('usuario.urls')),
     path('usuario-troca/', include('UsuarioTroca.urls')),
     path('objeto-troca/', include('ObjetoTroca.urls')),
-    path('mensagens/', include('mensagens.urls')),
     path('admin/', admin.site.urls),
 ]
 
