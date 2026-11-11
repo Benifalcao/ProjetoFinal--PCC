@@ -27,12 +27,11 @@
         </div>
       </div>
       <p class="mb-3">
-        O <strong>Sistemas de Trocas Locais</strong> é uma plataforma para cadastrar objetos e organizar trocas entre pessoas.
-        Em vez de comprar algo novo, você oferece um objeto que não usa mais e combina a troca por outro que precisa.
+        O <strong>
+        Este formulário tem como objetivo apresentar e avaliar a plataforma Consumo Consciente e Trocas Locais, um site desenvolvido para incentivar o consumo consciente por meio da permuta. A plataforma permite que os usuários cadastrem itens que não utilizam mais, mas que ainda estão em boas condições de uso, visualizem objetos disponibilizados por outras pessoas e encontrem ofertas próximas por meio da localização geográfica. 
       </p>
       <p class="mb-0">
-        Aqui você registra os usuários, cadastra os objetos disponíveis, cria propostas de troca e acompanha
-        quais pessoas e quais objetos participam de cada troca.
+        Ao identificar um item de interesse, os usuários podem entrar em contato diretamente com o proprietário para combinar a troca, considerando os objetos que cada um tem a oferecer ou uma troca monetária equivalente.
       </p>
     </div>
   </div>
@@ -54,7 +53,7 @@
   <div class="col-12 col-md-6 col-xl-4">
     <div class="panel h-100">
       <h3 class="h6 section-title"><i class="bi bi-box-seam" aria-hidden="true"></i><span>Objetos</span></h3>
-      <p class="text-muted">Registre os objetos disponíveis, com descrição, valor de avaliação e status.</p>
+      <p class="text-muted">Registre seus objetos, descreva suas caracteristicas e estado de preservação, bem como seu valor (em caso de troca monetária).</p>
       <a href="{% url 'listar_objetos' %}" class="btn btn-light btn-sm">Ver objetos</a>
     </div>
   </div>
@@ -62,7 +61,7 @@
   <div class="col-12 col-md-6 col-xl-4">
     <div class="panel h-100">
       <h3 class="h6 section-title"><i class="bi bi-arrow-repeat" aria-hidden="true"></i><span>Trocas</span></h3>
-      <p class="text-muted">Crie propostas de troca, informe ofertante e interessado e acompanhe o status de cada uma.</p>
+      <p class="text-muted">Crie propostas de troca e acompanhe seu prosseguimento etapa por etapa.</p>
       <a href="{% url 'trocas:listar_trocas' %}" class="btn btn-light btn-sm">Ver trocas</a>
     </div>
   </div>
@@ -70,7 +69,7 @@
   <div class="col-12 col-md-6 col-xl-6">
     <div class="panel h-100">
       <h3 class="h6 section-title"><i class="bi bi-person-lines-fill" aria-hidden="true"></i><span>Usuário troca</span></h3>
-      <p class="text-muted">Vincule usuários a uma troca e acompanhe o status, o protocolo e as datas de cada vínculo.</p>
+      <p class="text-muted">Defina os usuários vinculados a uma troca como "Ofertante" ou "Interessada(o)".</p>
       <a href="{% url 'usuariotroca:listar' %}" class="btn btn-light btn-sm">Ver vínculos</a>
     </div>
   </div>
@@ -78,11 +77,12 @@
   <div class="col-12 col-md-6 col-xl-6">
     <div class="panel h-100">
       <h3 class="h6 section-title"><i class="bi bi-arrow-left-right" aria-hidden="true"></i><span>Objeto troca</span></h3>
-      <p class="text-muted">Defina quais objetos, e em que quantidade, fazem parte de cada troca.</p>
+      <p class="text-muted">Defina quais objetos, e em que quantidade, fazem parte de uma troca.</p>
       <a href="{% url 'objetotroca:listar' %}" class="btn btn-light btn-sm">Ver objetos nas trocas</a>
     </div>
   </div>
 </section>
+
 
 <section class="row g-3 mt-1">
   <div class="col-12">
@@ -90,15 +90,14 @@
       <div class="panel-header">
         <div>
           <h2 class="h5 mb-1 section-title"><i class="bi bi-signpost-split" aria-hidden="true"></i><span>Como fazer uma troca</span></h2>
-          <p class="text-muted mb-0">Siga este caminho para registrar uma troca completa.</p>
+          <p class="text-muted mb-0">Veja como participar de uma troca na plataforma.</p>
         </div>
       </div>
       <ol class="mb-0">
-        <li class="mb-2"><strong>Cadastre os usuários</strong> que vão participar da troca.</li>
-        <li class="mb-2"><strong>Cadastre os objetos</strong> que cada pessoa quer oferecer.</li>
-        <li class="mb-2"><strong>Crie a troca</strong>, informando ofertante, interessado e a data inicial.</li>
-        <li class="mb-2"><strong>Vincule os usuários</strong> à troca em "Usuário troca".</li>
-        <li class="mb-0"><strong>Adicione os objetos</strong> à troca em "Objeto troca" e acompanhe o status até a conclusão.</li>
+        <li class="mb-2"><strong>Cadastre seus objetos</strong>, informando suas características e condições de uso.</li>
+        <li class="mb-2"><strong>Explore as ofertas</strong> e encontre objetos que sejam do seu interesse.</li>
+        <li class="mb-2"><strong>Entre em contato com o proprietário</strong> para demonstrar seu interesse.</li>
+        <li class="mb-0"><strong>Combine a troca diretamente</strong>, definindo os objetos envolvidos ou uma possível compensação monetária.</li>
       </ol>
     </div>
   </div>

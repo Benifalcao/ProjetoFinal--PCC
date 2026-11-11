@@ -152,3 +152,7 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'bem_vindo'
 LOGOUT_REDIRECT_URL = 'login'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'

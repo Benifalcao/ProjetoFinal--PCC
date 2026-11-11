@@ -12,6 +12,7 @@ def listar_usuario_troca(request):
     # ALTERAÇÃO: Caminho do template ajustado para o nome exato da pasta 'usuarioTroca'
     return render(request, 'usuarioTroca/listar_usuario_troca.html', {'usuarios_troca': usuarios_troca})
 
+
 @login_required
 @permission_required('usuariotroca.add_usuariotroca', raise_exception=True)
 def criar_usuario_troca(request):

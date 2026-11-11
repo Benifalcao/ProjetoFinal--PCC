@@ -1,3 +1,4 @@
+
 {% extends "base.html" %}
 
 {% block title %}Trocas{% endblock %}
@@ -55,8 +56,10 @@
           <td>{{ troca.data_resposta|date:"d/m/Y"|default:"-" }}</td>
           <td class="text-end">
             <a href="{% url 'trocas:detalhar_troca' troca.id %}" class="btn btn-light btn-sm"><i class="bi bi-eye" aria-hidden="true"></i> Detalhar</a>
+            {% if troca.pode_alterar %}
             <a href="{% url 'trocas:editar_troca' troca.id %}" class="btn btn-light btn-sm"><i class="bi bi-pencil" aria-hidden="true"></i> Editar</a>
             <a href="{% url 'trocas:deletar_troca' troca.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Deseja realmente deletar esta troca?');"><i class="bi bi-trash" aria-hidden="true"></i> Deletar</a>
+            {% endif %}
           </td>
         </tr>
         {% endfor %}
