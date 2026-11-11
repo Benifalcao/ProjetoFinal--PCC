@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'usuario',
     'UsuarioTroca',
     'ObjetoTroca',
-    'mensagens',
 ]
 
 
