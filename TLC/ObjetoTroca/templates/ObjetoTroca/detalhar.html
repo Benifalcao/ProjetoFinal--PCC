@@ -23,7 +23,10 @@
     <div class="panel">
       <div class="panel-header">
         <div>
-          <h2 class="h5 mb-1 section-title"><i class="bi bi-info-circle" aria-hidden="true"></i><span>Informações</span></h2>
+          <h2 class="h5 mb-1 section-title">
+            <i class="bi bi-info-circle" aria-hidden="true"></i>
+            <span>Informações</span>
+          </h2>
         </div>
       </div>
 
@@ -32,18 +35,24 @@
           <p class="text-muted mb-1">Objeto</p>
           <p class="fw-semibold mb-0">{{ item.objeto.nome }}</p>
         </div>
+
         <div class="col-md-6">
           <p class="text-muted mb-1">Troca</p>
           <p class="fw-semibold mb-0">Troca #{{ item.troca.pk }}</p>
         </div>
+
         <div class="col-md-6">
           <p class="text-muted mb-1">Quantidade</p>
-          <p class="mb-0"><span class="badge text-bg-primary">{{ item.quant }} un.</span></p>
+          <p class="mb-0">
+            <span class="badge text-bg-primary">{{ item.quant }} un.</span>
+          </p>
         </div>
+
         <div class="col-md-6">
           <p class="text-muted mb-1">Data da Troca</p>
           <p class="fw-semibold mb-0">{{ item.data_troca }}</p>
         </div>
+
         <div class="col-12">
           <p class="text-muted mb-1">Observação</p>
           <p class="mb-0">{{ item.obsevação|default:"-" }}</p>
@@ -51,8 +60,17 @@
       </div>
 
       <div class="d-flex justify-content-end gap-2 mt-4">
-        <a href="{% url 'objetotroca:listar' %}" class="btn btn-light"><i class="bi bi-arrow-left" aria-hidden="true"></i> Voltar para a lista</a>
-        <a href="{% url 'objetotroca:editar' item.id %}" class="btn btn-primary"><i class="bi bi-pencil" aria-hidden="true"></i> Editar</a>
+        <a href="{% url 'objetotroca:listar' %}" class="btn btn-light">
+          <i class="bi bi-arrow-left" aria-hidden="true"></i>
+          Voltar para a lista
+        </a>
+
+        {% if pode_editar %}
+        <a href="{% url 'objetotroca:editar' item.id %}" class="btn btn-primary">
+          <i class="bi bi-pencil" aria-hidden="true"></i>
+          Editar
+        </a>
+        {% endif %}
       </div>
     </div>
   </div>

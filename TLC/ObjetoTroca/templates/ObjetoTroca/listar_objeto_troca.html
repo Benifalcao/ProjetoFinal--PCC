@@ -21,12 +21,17 @@
 <section class="panel">
   <div class="panel-header">
     <div>
-      <h2 class="h5 mb-1 section-title"><i class="bi bi-table" aria-hidden="true"></i><span>Lista de objetos</span></h2>
+      <h2 class="h5 mb-1 section-title">
+        <i class="bi bi-table" aria-hidden="true"></i>
+        <span>Lista de objetos</span>
+      </h2>
       <p class="text-muted mb-0">Pesquise, visualize, edite ou delete um registro.</p>
     </div>
     <div class="d-flex gap-2">
       <input class="form-control form-control-sm table-search" type="search" placeholder="Buscar" data-table-search="objetosTrocaTable" aria-label="Buscar objetos">
-      <a href="{% url 'objetotroca:criar' %}" class="btn btn-primary btn-sm text-nowrap"><i class="bi bi-plus-lg" aria-hidden="true"></i> Adicionar Objeto à Troca</a>
+      <a href="{% url 'objetotroca:criar' %}" class="btn btn-primary btn-sm text-nowrap">
+        <i class="bi bi-plus-lg" aria-hidden="true"></i> Adicionar Objeto à Troca
+      </a>
     </div>
   </div>
 
@@ -46,11 +51,25 @@
         <tr>
           <td class="fw-semibold">{{ ot.objeto.nome }}</td>
           <td>Troca #{{ ot.troca.pk }}</td>
-          <td><span class="badge text-bg-primary">{{ ot.quant }} un.</span></td>
+          <td>
+            <span class="badge text-bg-primary">{{ ot.quant }} un.</span>
+          </td>
           <td class="text-end">
-            <a href="{% url 'objetotroca:detalhar' ot.id %}" class="btn btn-light btn-sm"><i class="bi bi-eye" aria-hidden="true"></i> Detalhar</a>
-            <a href="{% url 'objetotroca:editar' ot.id %}" class="btn btn-light btn-sm"><i class="bi bi-pencil" aria-hidden="true"></i> Editar</a>
-            <a href="{% url 'objetotroca:deletar' ot.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Deseja realmente deletar este registro?');"><i class="bi bi-trash" aria-hidden="true"></i> Deletar</a>
+            <a href="{% url 'objetotroca:detalhar' ot.id %}" class="btn btn-light btn-sm">
+              <i class="bi bi-eye" aria-hidden="true"></i> Detalhar
+            </a>
+
+            {% if ot.pode_editar %}
+            <a href="{% url 'objetotroca:editar' ot.id %}" class="btn btn-light btn-sm">
+              <i class="bi bi-pencil" aria-hidden="true"></i> Editar
+            </a>
+            {% endif %}
+
+            {% if ot.pode_deletar %}
+            <a href="{% url 'objetotroca:deletar' ot.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Deseja realmente deletar este registro?');">
+              <i class="bi bi-trash" aria-hidden="true"></i> Deletar
+            </a>
+            {% endif %}
           </td>
         </tr>
         {% endfor %}
